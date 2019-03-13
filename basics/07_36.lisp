@@ -8,6 +8,22 @@
     )
 )
 
+;(defun independent (arr1 arr2)
+;    (cond
+;        ((null arr1) t)
+;        ((null ((lambda (el arr) (cond
+;                                     ((null arr) NIL)
+;                                     ((= (car arr) el) T)
+;                                     (t (present el (cdr arr)))
+;                                 )
+;                ) (car arr1) arr2
+;               )
+;          ) (independent (cdr arr1) arr2)
+;         )
+;        (t NIL)
+;    )
+;)
+
 (defun independent (arr1 arr2)
     (cond
         ((null arr1) t)

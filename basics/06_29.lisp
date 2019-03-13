@@ -1,11 +1,4 @@
-;Определите функцию, вычисляющую глубину списка (самой глубокой ветви).
-
-( defun maxim (a b)
-    (cond 
-        ((> a b) a)
-        (t b)
-    )
-)
+;Определите функцию, вычисляющую глубину списка (самой глубокой ветви).
 
 (defun incr (a)
     (+ a 1)
@@ -14,7 +7,13 @@
 ( defun depth (arr cur_d)
     (cond
         ((null arr) cur_d)
-        (t (maxim (depth (cadr arr) (incr cur_d)) (depth (caddr arr) (incr cur_d))))
+        (t ((lambda (a b) (cond 
+                              ((> a b) a)
+                              (t b)
+                          )) 
+               (depth (cadr arr) (incr cur_d)) 
+               (depth (caddr arr) (incr cur_d)))
+           )
     )
 )
 
