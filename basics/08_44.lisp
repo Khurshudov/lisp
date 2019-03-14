@@ -28,5 +28,5 @@
 
 (print (my_equal '(2 (3 NIL (2)) NIL) '(2 (3 NIL (2)) NIL))) ; T
 (print (my_equal '(2 (3 NIL (2)) NIL) '(2))) ; T
-(print (my_equal '(2 (3 NIL (4)) NIL) '(2))) ; NIL
+(print (my_equal '(2 (3 NIL (4)) NIL) '(2))) ; T
 (print (my_equal '(2 (3 NIL (4)) NIL) '(2 (5) NIL))) ; NIL
