@@ -2,13 +2,8 @@
 
 (defun tree_equal (a b)
     (cond
-        ((and (eq a '()) (eq b '()) ) T )
-        ( ((lambda (x y) (or x y))
-            (and (null (car a)) (not(null (car b)))) 
-            (and (null (car b)) (not(null (car a))))
-          ) NIL 
-        )
-        ((= (car a) (car b) ) ((lambda (x y) (and x y)) 
+        ((eq b '()) T )
+        ((equal (car a) (car b) ) ((lambda (x y) (and x y)) 
                                    (tree_equal (cadr a) (cadr b)) 
                                    (tree_equal (caddr a) (caddr b))
                               ) 
@@ -34,3 +29,4 @@
 (print (my_equal '(2 (3 NIL (2)) NIL) '(2 (3 NIL (2)) NIL))) ; T
 (print (my_equal '(2 (3 NIL (2)) NIL) '(2))) ; T
 (print (my_equal '(2 (3 NIL (4)) NIL) '(2))) ; NIL
+(print (my_equal '(2 (3 NIL (4)) NIL) '(2 (5) NIL))) ; NIL
