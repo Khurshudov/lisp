@@ -1,15 +1,19 @@
 ;Определите функцию, разделяющую исходный список на два подсписка. В первый из них должны попасть элементы 
 ;с нечетными номерами,во второй — элементы с четными номерами.
 (defun split (arr)
-    (cond
-        ( (null arr) (list NIL NIL))
-        ((null (cadr arr)) (list (list (car arr)) NIL))
-        (T (list 
-                (cons (car arr) (car (split (cddr arr)))) 
-                (cons (cadr arr) (cadr (split (cddr arr)))) 
-           )
-        )
-        
+    ( 
+         (lambda (first second rest) 
+             (
+                 cond
+                    ( (null arr) (list NIL NIL))
+                    ((null second) (list (list first) NIL))
+                    (T (list 
+                            (cons first (car (split rest))) 
+                            (cons second (cadr (split rest))) 
+                       )
+                    )
+             )
+        ) (car arr) (cadr arr) (cddr arr)
     )
 )
 
