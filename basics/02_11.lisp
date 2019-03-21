@@ -1,13 +1,15 @@
 ;Определите функцию, осуществляющую разделение исходного списка на два подсписка. 
 ;В первый из них должно попасть указанное количество элементов с начала списка,
 ;во второй — оставшиеся элементы.
-
 (defun split (arr i)
-    (cond
-        ( (null arr) (list NIL NIL))
-        ((> i 0)  ((lambda (x) (list (cons (car arr) (car x)) (cadr x)))   (split (cdr arr) (1- i)) ) )
-        (t  ((lambda (x) (list (car x) (cons (car arr) (cadr x))))   (split (cdr arr) (1- i)) ) )
-    )
+    ((lambda (first rest new-idx) 
+            (cond
+                ( (null arr) (list NIL NIL))
+                ((> i 0)  ((lambda (x) (list (cons first (car x)) (cadr x)))   (split rest new-idx) ) )
+                (t  ((lambda (x) (list (car x) (cons first (cadr x))))   (split rest new-idx) ) )
+            )
+        ) (car arr) (cdr arr) (1- i)
+     )
 )
 
 (print (split '( -10 1 2 3 4 5 -2 -4) 3)) ; ((-10 1 2) (3 4 5 -2 -4)) 
