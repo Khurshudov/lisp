@@ -1,14 +1,16 @@
 ;Определите функцию, добавляющую элементы одного списка во второй спи- сок, начиная с заданной позиции.
-
 ( defun insert (&key to from pos)
-    (cond
-        ((and 
-              (null to) 
-              (null from)
-         ) NIL)
-        ((> pos 1) (cons (car to) (insert :to (cdr to) :from from :pos (1- pos))))
-        ((not (null from)) (cons (car from) (insert :to to :from (cdr from) :pos -1)))
-        (t (cons (car to) (insert :to (cdr to) :from from :pos -1)))
+    ((lambda (first-to rest-to first-from rest-from) 
+        (cond
+            ((and 
+                  (null to) 
+                  (null from)
+             ) NIL)
+            ((> pos 1) (cons first-to (insert :to rest-to :from from :pos (1- pos))))
+            ((not (null from)) (cons first-from (insert :to to :from rest-from :pos -1)))
+            (t (cons first-to (insert :to rest-to :from from :pos -1)))
+        )
+    ) (car to) (cdr to) (car from) (cdr from)
     )
 )
 
