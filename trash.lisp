@@ -2,21 +2,23 @@
 
 (defun max2 (el1 el2)
     (cond
+        ((null el1) el2)
+        ((null el2) el1)
         ((> el1 el2) el1)
         (T el2)
     )
 )
 
 (defun max-all (arr)
-    (cond 
-        ((null (cadr arr)) (car arr) )
-        (T (max2 (car arr) (max-all (cdr arr) )))
-    )
+        (cond 
+            ((null arr) NIL)
+            (T (max2 (car arr) (max-all (cdr arr) )))
+        )
 )
 
 ( defun max-tree (arr)
     (cond
-        ((null (cdr arr)) (car arr))
+        ((null arr) NIL)
         (T  
             (max-all 
                 (list
@@ -29,4 +31,4 @@
     )
 )
 
-(print (max-tree '(1 (2) (3 (4) NIL)))) ; 3
+(print (max-tree '(1 NIL (3 (4) NIL)))) ; 3
