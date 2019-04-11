@@ -2,17 +2,20 @@
 ;нен в том и только в том случае, когда, являющейся функциональным аргу-
 ;ментом предикат пред истинен для всех элементов списка список.
 
-(defun and-lst (lst)
-    (cond 
-        ((null lst) T)
-        ((null (car lst)) NIL)
-        (T (and-lst (cdr lst)))
+(defun my-every (pred lst)
+    (if
+        (null
+            (mapcan #'(lambda (x)  
+                            (cond
+                                ((not (funcall pred x)) (list T))
+                                (T NIL)
+                            )
+            ) lst)
+        )
+        T
+        NIL
     )
 )
 
-(defun my-every (lst pred)
-    (and-lst (mapcar pred lst) )
-)
-
-(print (my-every '(1 2 3 (4 5)) #'atom)) ;NIL
-(print (my-every '(1 2 3 ) #'atom)) ;T
+(print (my-every #'atom '(1 2 (4)))) ;NIL
+(print (my-every #'atom '(1 2 4))) ;T
