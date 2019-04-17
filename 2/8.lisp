@@ -1,3 +1,4 @@
+;Напишите генератор натуральных чисел
 (defun gen-nat-numbers ()
     (let ((x 0))
         (lambda () (setq x (1+ x)))
