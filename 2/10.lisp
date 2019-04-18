@@ -21,7 +21,7 @@
 
 (print (funcall g1)) ; (A) 
 (print (funcall g1)) ; (B A) 
+(print (funcall g2)) ; (A) 
 (print (funcall g1)) ; (A B A) 
 (print (funcall g1)) ; (B A B A) 
-(print (funcall g2)) ; (A) 
 (print (funcall g2)) ; (B A) 

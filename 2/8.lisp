@@ -11,3 +11,5 @@
 (print (funcall g1)) ; 1
 (print (funcall g1)) ; 2
 (print (funcall g2)) ; 1
+(print (funcall g1)) ; 3
+(print (funcall g2)) ; 2

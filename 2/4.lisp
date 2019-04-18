@@ -3,7 +3,7 @@
 ;ментом предикат пред истинен для всех элементов списка список.
 
 (defun my-every (pred lst)
-    (if
+    (not
         (null
             (mapcan #'(lambda (x)  
                             (cond
@@ -12,8 +12,6 @@
                             )
             ) lst)
         )
-        T
-        NIL
     )
 )
 
