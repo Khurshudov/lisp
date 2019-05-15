@@ -1,3 +1,5 @@
+;Определите макрос, который возвращает свой вызов.
+
 (defmacro func (&rest x)
     `(quote ,(append (list (quote func)) x))
 )

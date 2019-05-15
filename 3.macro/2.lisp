@@ -1,7 +1,20 @@
-(defmacro my-if (res p q)
-    `(if ,res ,p ,q)
+;Определите макрос (POP стек), который читает из стека верхний
+; элемент и меняет значение переменной стека.
+
+(setq stack '(1 2 3))
+
+(defmacro my-pop (st)
+    (list 'prog1 
+        `(car ,st) 
+        `(setq ,st (cdr ,st))
+    )
 )
 
-(print (macroexpand '(my-if (= 4 4) 44 0))) ;(IF (= 4 4) 44 0) 
-(print (my-if (= 4 4) 44 0)) ; 44
-(print (my-if (= 4 5) 44 0)) ; 0
+(print (macroexpand '(my-pop stack))) 
+;(LET ((#:PROG1-2814 (CAR STACK))) (SETQ STACK (CDR STACK)) #:PROG1-2814) 
+(print (my-pop stack)); 1
+(print stack) ; (2 3)
+(print (my-pop stack)) ; 2
+(print stack) ; (3) 
+(print (my-pop stack)); 3
+(print stack) ; NIL
